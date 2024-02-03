@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const item = document.createElement('div');
         item.classList.add('item');
         item.setAttribute('draggable', 'true');
-        item.innerText = `Item ${i}`;
+        item.innerText = `${i}`;
         item.style.backgroundColor = getRandomColor();
         scrollableItems.appendChild(item);
     }
@@ -44,3 +44,4 @@ function getRandomColor() {
     return color;
 }    
 // box 1 
+// Sample data for creating prediction items

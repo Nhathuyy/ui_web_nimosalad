@@ -16,9 +16,11 @@ body {
     flex-direction: column;
     flex: 3;
     background-color: #f0f0f0;
-    padding: 1%; /* Use percentages for padding */
+    padding: 1%;
+    /* Use percentages for padding */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 2vmin; /* Use vmin for border-radius to make it responsive */
+    border-radius: 2vmin;
+    /* Use vmin for border-radius to make it responsive */
 }
 
 .right-box {
@@ -34,8 +36,9 @@ body {
     margin-bottom: 2%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 2vmin;
-    overflow-y: auto; 
-    `
+    overflow-y: auto;
+
+
 }
 
 .small-box {
@@ -70,30 +73,24 @@ body {
 .scrollable-items {
     display: flex;
     overflow-x: auto;
-    overflow-y: auto;
+
     white-space: nowrap;
 }
+
+
 
 .scrollable-items {
     display: flex;
     overflow-x: auto;
-    overflow-y: auto;
     white-space: nowrap;
-    scroll-behavior: smooth;
-}
-
-.scrollable-items {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: auto;
-    white-space: nowrap;
-    max-height: calc(100% - 10vmin);
-    scroll-behavior: smooth;
+    max-height: calc(100% - 10vmin); /* Adjust as needed */
+    scroll-behavior: auto;
     position: relative;
 }
 
+
 .scrollable-items::-webkit-scrollbar {
-    width: 2vmin;
+    width: 4vmin;
 }
 
 .scrollable-items::-webkit-scrollbar-track {
@@ -107,16 +104,20 @@ body {
 
 .item {
     width: 50px;
-    height: 50px;
+    height: 30px;
     margin-right: 2%;
+    justify-content: left;
     display: inline-block;
+    align-items: center;
     background-color: #ddd;
-    border-radius: 5%; /* Adjust the border-radius for rounded corners */
+    border-radius: 5%;
+    /* Adjust the border-radius for rounded corners */
     cursor: grab;
     user-select: none;
     position: relative;
+
     z-index: 1;
-    padding: 10px;
+    padding: 40px;
 }
 
 .box_array {
@@ -133,59 +134,44 @@ body {
     overflow: scroll;
     margin: 0;
     padding: 0;
-    border: 2px solid #ccc;
     font-size: 2vmin;
     font-family: Arial, sans-serif;
     -webkit-overflow-scrolling: touch;
 }
-/* Box 1 */
-/* ... other styles ... */
 
-.api-box {
-    flex: 1;
+/* Box 1 */
+.large-box {
+    flex: 3;
     background-color: #f0f0f0;
     padding: 20px;
+    margin-bottom: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 10px;
 }
 
-.scrollable-items-api {
+.predict {
     display: flex;
-    overflow-x: auto;
+    flex-direction: column;
+    /* Change to column direction */
     overflow-y: auto;
-    white-space: nowrap;
-    max-height: calc(100% - 40px);
-    scroll-behavior: smooth;
-    position: relative;
+    /* Enable vertical scrolling */
+    max-height: 900px;
+    /* Set a maximum height for vertical scrolling */
 }
 
-.scrollable-items-api::-webkit-scrollbar {
-    width: 12px;
-}
-
-.scrollable-items-api::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-.scrollable-items-api::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-.api-item {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    display: inline-block;
+.predict-item {
+    margin-bottom: 10px;
+    /* Add margin for separation */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: #ddd;
     border-radius: 10px;
     cursor: grab;
     user-select: none;
     position: relative;
     z-index: 1;
-    padding: 10px;
+    padding: 150px;
 }
-
-/* ... other styles ... */

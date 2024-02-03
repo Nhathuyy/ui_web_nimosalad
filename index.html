@@ -1,105 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Your Responsive Website</title>
 </head>
+
 <body>
     <div class="container">
         <div class="left-box">
             <div class="large-box">
-<div class="api-box">
-    <h2>Latest Items from API</h2>
-
-    <!-- Sample item (you can repeat this structure for other items) -->
-    <div class="prediction-item">
-        <div class="round-info">Round 2117</div>
-        <div class="prediction-result">Chanh 🍋, Kiwi 🥝, Đùi gà 🍗, Táo 🍎, Hamburger 🍔</div>
-        <div class="prediction-details">
-            <div class="image-info">Image: Táo 🍎, Probability: 53.64160%</div>
-            <div class="image-info">Image: Chanh 🍋, Probability: 29.18781%</div>
-            <div class="image-info">Image: Kiwi 🥝, Probability: 11.02193%</div>
-            <div class="image-info">Image: Đùi gà 🍗, Probability: 3.99780%</div>
-            <div class="image-info">Image: Hamburger 🍔, Probability: 2.15069%</div>
-            <div class="result-info">Kết quả của Round 2117 là: Chanh 🍋 lúc 02/02/2024 - 21:20:40</div>
-        </div>
-    </div>
-
-
-    <!-- Add more items as needed -->
-
-    <!-- Scrollable area for prediction items -->
-    <div class="scrollable-items" id="scrollableItemsBox1">
-        <!-- Content dynamically added using JavaScript will go here -->
-    </div>
-</div>
-<div class="api-box">
-    <h2>Latest Items from API</h2>
-
-    <!-- Sample item (you can repeat this structure for other items) -->
-    <div class="prediction-item">
-        <div class="round-info">Round 2117</div>
-        <div class="prediction-result">Chanh 🍋, Kiwi 🥝, Đùi gà 🍗, Táo 🍎, Hamburger 🍔</div>
-        <div class="prediction-details">
-            <div class="image-info">Image: Táo 🍎, Probability: 53.64160%</div>
-            <div class="image-info">Image: Chanh 🍋, Probability: 29.18781%</div>
-            <div class="image-info">Image: Kiwi 🥝, Probability: 11.02193%</div>
-            <div class="image-info">Image: Đùi gà 🍗, Probability: 3.99780%</div>
-            <div class="image-info">Image: Hamburger 🍔, Probability: 2.15069%</div>
-            <div class="result-info">Kết quả của Round 2117 là: Chanh 🍋 lúc 02/02/2024 - 21:20:40</div>
-        </div>
-    </div>
-
-
-    <!-- Add more items as needed -->
-
-    <!-- Scrollable area for prediction items -->
-    <div class="scrollable-items" id="scrollableItemsBox1">
-        <!-- Content dynamically added using JavaScript will go here -->
-    </div>
-</div>
-<div class="api-box">
-    <h2>Latest Items from API</h2>
-
-    <!-- Sample item (you can repeat this structure for other items) -->
-    <div class="prediction-item">
-        <div class="round-info">Round 2117</div>
-        <div class="prediction-result">Chanh 🍋, Kiwi 🥝, Đùi gà 🍗, Táo 🍎, Hamburger 🍔</div>
-        <div class="prediction-details">
-            <div class="image-info">Image: Táo 🍎, Probability: 53.64160%</div>
-            <div class="image-info">Image: Chanh 🍋, Probability: 29.18781%</div>
-            <div class="image-info">Image: Kiwi 🥝, Probability: 11.02193%</div>
-            <div class="image-info">Image: Đùi gà 🍗, Probability: 3.99780%</div>
-            <div class="image-info">Image: Hamburger 🍔, Probability: 2.15069%</div>
-            <div class="result-info">Kết quả của Round 2117 là: Chanh 🍋 lúc 02/02/2024 - 21:20:40</div>
-        </div>
-    </div>
-
-
-    <!-- Add more items as needed -->
-
-    <!-- Scrollable area for prediction items -->
-    <div class="scrollable-items" id="scrollableItemsBox1">
-        <!-- Content dynamically added using JavaScript will go here -->
-    </div>
-</div>
-
+                <div class="predict" id="predictItems">
+                    <!-- Content dynamically added using JavaScript will go here -->
+                </div>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const predictItems = document.getElementById('predictItems');
+
+                    // Function to add a new item
+                    function addNewItem() {
+                        const item = document.createElement('div');
+                        item.classList.add('predict-item');
+                        item.innerText = `New Item ${predictItems.children.length + 1}`;
+                        item.style.backgroundColor = getRandomColor();
+                        predictItems.appendChild(item);
+
+                        // Scroll to the bottom to show the latest item
+                        predictItems.scrollTop = predictItems.scrollHeight;
+                    }
+
+                    // Generate more than 12 items for testing scroll
+                    for (let i = 1; i <= 20; i++) {
+                        addNewItem();
+
+                    }
+
+                    // Implement smooth drag-and-drop functionality
+                    let isDragging = false;
+                    let startY;
+                    let scrollTop;
+
+                    predictItems.addEventListener('mousedown', (e) => {
+                        isDragging = true;
+                        startY = e.pageY - predictItems.offsetTop;
+                        scrollTop = predictItems.scrollTop;
+                    });
+
+                    document.addEventListener('mouseup', () => {
+                        isDragging = false;
+                    });
+
+                    document.addEventListener('mousemove', (e) => {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        const y = e.pageY - startY;
+                        const walk = y - scrollTop;
+                        predictItems.scrollTop = scrollTop - walk;
+                    });
+
+                    // Example: Add a new item every 2 seconds
+                    setInterval(addNewItem, 20000);
+                });
+
+                function getRandomColor() {
+                    const letters = '0123456789ABCDEF';
+                    let color = '#';
+                    for (let i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+            </script>
+
             <div class="small-box">
                 <div class="box_array">
                     <div class="scrollable-items" id="scrollableItems"></div>
                 </div>
-                
-     
+
+
             </div>
-            
+
         </div>
-        
+
         <div class="right-box">
             <div class="equal-box">
-                Box 5 - Equal Box
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SGtJ30CHWD0?si=TmoQhkWhuMDjyIdK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                
+         
+
+               
             </div>
             <div class="equal-box">
                 Box 6 - Equal Box
@@ -108,4 +101,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
