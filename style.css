@@ -1,0 +1,191 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.left-box {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    background-color: #f0f0f0;
+    padding: 1%; /* Use percentages for padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin; /* Use vmin for border-radius to make it responsive */
+}
+
+.right-box {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.large-box {
+    flex: 3;
+    background-color: #f0f0f0;
+    padding: 2%;
+    margin-bottom: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+    overflow-y: auto; 
+    `
+}
+
+.small-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 2%;
+    margin-bottom: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+    overflow: hidden;
+}
+
+.equal-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 2%;
+    margin-bottom: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+}
+
+/* Your existing styles */
+.small-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+    overflow: hidden;
+}
+
+.scrollable-items {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.scrollable-items {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.scrollable-items {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+    max-height: calc(100% - 10vmin);
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+.scrollable-items::-webkit-scrollbar {
+    width: 2vmin;
+}
+
+.scrollable-items::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.scrollable-items::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2vmin;
+}
+
+.item {
+    width: 50px;
+    height: 50px;
+    margin-right: 2%;
+    display: inline-block;
+    background-color: #ddd;
+    border-radius: 5%; /* Adjust the border-radius for rounded corners */
+    cursor: grab;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+}
+
+.box_array {
+    position: relative;
+    height: 100%;
+}
+
+.scrollable-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    margin: 0;
+    padding: 0;
+    border: 2px solid #ccc;
+    font-size: 2vmin;
+    font-family: Arial, sans-serif;
+    -webkit-overflow-scrolling: touch;
+}
+/* Box 1 */
+/* ... other styles ... */
+
+.api-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.scrollable-items-api {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+    max-height: calc(100% - 40px);
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+.scrollable-items-api::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scrollable-items-api::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.scrollable-items-api::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.api-item {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    display: inline-block;
+    background-color: #ddd;
+    border-radius: 10px;
+    cursor: grab;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+}
+
+/* ... other styles ... */
