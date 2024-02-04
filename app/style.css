@@ -1,0 +1,246 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+
+.left-box {
+    order: 1; /* Default order is 1 */
+    flex-grow: 1; /* Allow left-box to grow and take available space */
+}
+
+.right-box {
+    order: 2; /* Default order is 2 */
+}
+
+@media screen and (min-width: 868px) {
+    /* Adjust the order for larger screens (768px and above) */
+    .container {
+        flex-direction: row;
+    }
+
+    .left-box {
+        order: 1;
+        flex-grow: 0; /* Reset flex-grow to prevent left-box from taking extra space */
+        width: 50%; /* 50% width for left-box on larger screens */
+    }
+
+    .right-box {
+        order: 2;
+    }
+    
+}
+/* Responsive styles for iPhone 13 or similar devices */
+@media screen and (max-width: 428px) {
+    .left-box {
+        width: 100%;
+    }
+    .large-box{
+        max-height: 50%;
+    }
+    .small-box{
+        max-height: 140px;
+    }
+    .box-if{
+        height: 251%;
+    }
+}
+.left-box {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    background-color: #f0f0f0;
+    padding: 1%;
+    /* Use percentages for padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+    /* Use vmin for border-radius to make it responsive */
+}
+
+.right-box {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.large-box {
+    flex: 3;
+    background-color: #f0f0f0;
+    padding: 2%;
+  
+    margin-bottom: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+    overflow-y: auto;
+
+
+}
+
+.small-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 2%;
+    margin-bottom: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+    overflow: hidden;
+}
+
+.equal-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 2%;
+    margin-bottom: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+}
+
+/* Your existing styles */
+.small-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2vmin;
+    overflow: hidden;
+}
+
+.scrollable-items {
+    display: flex;
+    overflow-x: auto;
+
+    white-space: nowrap;
+}
+
+
+
+.scrollable-items {
+    display: flex;
+    overflow-x: auto;
+
+    white-space: nowrap;
+    max-height: calc(100% - 10vmin); /* Adjust as needed */
+    scroll-behavior: auto;
+    position: relative;
+
+}
+
+
+.scrollable-items::-webkit-scrollbar {
+    width: 4vmin;
+}
+
+.scrollable-items::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.scrollable-items::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2vmin;
+}
+
+.item {
+    width: 50px;
+    height: 30px;
+    margin-right: 2%;
+    justify-content: left;
+    display: inline-block;
+    align-items: center;
+    background-color: #ddd;
+    border-radius: 5%;
+    /* Adjust the border-radius for rounded corners */
+    cursor: grab;
+    user-select: none;
+    position: relative;
+
+    z-index: 1;
+    padding: 40px;
+}
+.item.active {
+    border: 2px solid red; /* Border color for active items */
+
+}
+.star-icon {
+    display: inline-block;
+    font-size: 20px;
+    color: gold;
+    margin-right: 5px;
+}
+
+.item.active {
+    background-color: red;
+    
+    
+}
+.box_array {
+    position: relative;
+    height: 100%;
+}
+
+.scrollable-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    margin: 0;
+    padding: 0;
+    font-size: 2vmin;
+    font-family: Arial, sans-serif;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Box 1 */
+.large-box {
+    flex: 3;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    /* max-height: 50%; */
+}
+
+.predict {
+    display: flex;
+    flex-direction: column;
+    /* Change to column direction */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    max-height: 900px;
+    /* Set a maximum height for vertical scrolling */
+}
+
+.predict-item {
+    margin-bottom: 10px;
+    /* Add margin for separation */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+    border-radius: 10px;
+    cursor: grab;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+    padding: 150px;
+}
+.predict-item {
+    transition: margin-bottom 0.3s ease;
+}
+
+.predict-item.active {
+    margin-bottom: 100px;
+}
