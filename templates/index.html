@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Your Responsive Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-box">
+            <div class="large-box">
+                <div class="predict" id="predictItems">
+                  
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const predictItems = document.getElementById('predictItems');
+        
+                    // Function to add a new item
+                    function addNewItem(roundNumber, predictedValues, predictedValues1, top5Results) {
+                        // Remove "active" class from existing active item
+                        const activeItem = document.querySelector('.predict-item.active');
+                        if (activeItem) {
+                            activeItem.classList.remove('active');
+                        }
+        
+                        const item = document.createElement('div');
+                        item.classList.add('predict-item');
+                        
+                        // Populate item with prediction information
+                        item.innerHTML = `
+                            <p class="prediction">Dự đoán round ${roundNumber} là: ${predictedValues}</p>
+                            <p class="prediction">Dự đoán round ${roundNumber} là: ${predictedValues1}</p>
+                        `;
+                        
+                        // Create and append elements for top 5 results
+                        const resultsContainer = document.createElement('div');
+                        resultsContainer.classList.add('image-info');
+                        
+                        top5Results.forEach(result => {
+                            const resultElement = document.createElement('p');
+                            resultElement.innerHTML = `Image: ${result[0]}, Probability: ${result[1].toFixed(5)}%`;
+                            resultsContainer.appendChild(resultElement);
+                        });
+                        
+                        item.appendChild(resultsContainer);
+                        
+                        item.style.backgroundColor = getRandomColor();
+                        predictItems.appendChild(item);
+        
+                        // Scroll to the bottom to show the latest item
+                        item.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        
+                        // Add "active" class to the new item
+                        item.classList.add('active');
+                    }
+        
+                    // Example: Add a new item every 2 seconds
+                    setInterval(() => {
+                        // Fetch data from API and call addNewItem function
+                        fetch('/api/predictions') // Update the API endpoint
+                            .then(response => response.json())
+                            .then(data => {
+                                const { round_number, predicted_values, predicted_values_1, top_5_results } = data;
+                                addNewItem(round_number, predicted_values, predicted_values_1, top_5_results);
+                            })
+                            .catch(error => console.error('Error fetching predictions:', error));
+                    }, 2000);
+                });
+        
+                function getRandomColor() {
+                    const letters = '0123456789ABCDEF';
+                    let color = '#';
+                    for (let i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+            </script>
+            <!-- <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const predictItems = document.getElementById('predictItems');
+            
+                    // Function to add a new item
+                    function addNewItem() {
+                        // Remove "active" class from existing active item
+                        const activeItem = document.querySelector('.predict-item.active');
+                        if (activeItem) {
+                            activeItem.classList.remove('active');
+                        }
+            
+                        const item = document.createElement('div');
+                        item.classList.add('predict-item');
+                        item.innerText = `New Item ${predictItems.children.length + 1}`;
+                        item.style.backgroundColor = getRandomColor();
+                        predictItems.appendChild(item);
+            
+                        // Scroll to the bottom to show the latest item
+                        item.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            
+                        // Add "active" class to the new item
+                        item.classList.add('active');
+                    }
+            
+                    // Generate more than 12 items for testing scroll
+                    for (let i = 1; i <= 20; i++) {
+                        addNewItem();
+                    }
+            
+                    // Implement smooth drag-and-drop functionality
+                    let isDragging = false;
+                    let startY;
+                    let scrollTop;
+            
+                    predictItems.addEventListener('mousedown', (e) => {
+                        isDragging = true;
+                        startY = e.pageY - predictItems.offsetTop;
+                        scrollTop = predictItems.scrollTop;
+                    });
+            
+                    document.addEventListener('mouseup', () => {
+                        isDragging = false;
+                    });
+            
+                    document.addEventListener('mousemove', (e) => {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        const y = e.pageY - startY;
+                        const walk = y - scrollTop;
+                        predictItems.scrollTop = scrollTop - walk;
+                    });
+            
+                    // Example: Add a new item every 2 seconds
+                    setInterval(addNewItem, 2000);
+                });
+            
+                function getRandomColor() {
+                    const letters = '0123456789ABCDEF';
+                    let color = '#';
+                    for (let i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+            </script> -->
+            <div class="small-box">
+                <div class="box_array">
+                    <div class="scrollable-items" id="scrollableItems"></div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="right-box">
+            <div class="equal-box box-if">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SGtJ30CHWD0?si=TmoQhkWhuMDjyIdK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                
+         
+
+               
+            </div>
+            <div class="equal-box">
+                Box 6 - Equal Box
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

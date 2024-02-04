@@ -1,15 +1,34 @@
+ 
+// box 2
+
 document.addEventListener('DOMContentLoaded', function () {
     const scrollableItems = document.getElementById('scrollableItems');
 
-    // Generate more than 12 items for testing scroll
-    for (let i = 1; i <= 20; i++) {
+    // Function to add a new item
+    function addNewItem() {
         const item = document.createElement('div');
         item.classList.add('item');
-        item.setAttribute('draggable', 'true');
-        item.innerText = `${i}`;
+        item.innerText = ` ${scrollableItems.children.length + 1}`;
         item.style.backgroundColor = getRandomColor();
-        scrollableItems.appendChild(item);
+
+        scrollableItems.insertBefore(item, scrollableItems.firstChild);
+        // item.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+
+        // Remove 'active' class from the previous active item
+        const previousActive = document.querySelector('.item.active');
+        if (previousActive) {
+            previousActive.classList.remove('active');
+        }
+
+        // Add 'active' class to the new item
+        item.classList.add('active');
     }
+
+    // Generate more than 12 items for testing scroll
+    for (let i = 1; i <= 20; i++) {
+        addNewItem();
+    }
+    scrollableItems.style.overflowY = 'hidden';
 
     // Implement smooth drag-and-drop functionality
     let isDragging = false;
@@ -33,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const walk = x - scrollLeft;
         scrollableItems.scrollLeft = scrollLeft - walk;
     });
+
+    // Example: Add a new item every 2 seconds
+    setInterval(addNewItem, 2000);
 });
 
 function getRandomColor() {
@@ -42,6 +64,4 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-}    
-// box 1 
-// Sample data for creating prediction items
+}
